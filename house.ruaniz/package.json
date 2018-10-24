@@ -1,0 +1,17 @@
+{
+  "name": "house.ruaniz",
+  "version": "0.0.0",
+  "description": "sales house",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "author": "house.ruaniz.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "realm": "^2.18.0"
+  }
+}
