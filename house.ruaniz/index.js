@@ -3,9 +3,9 @@
  */
 'use strict';
 
-var express = require('express'),
-    bodyParser = require('body-parser'),
-    realm = require('realm');
+var Express = require('express'),
+    BodyParser = require('body-parser'),
+    Realm = require('realm');
 
 let PostSchema = {
 		name: 'Post',
@@ -16,17 +16,17 @@ let PostSchema = {
 		}
 };
 
-var blogRealm = new Realm({
+var realm = new Realm({
 	path: 'data/blog.realm',
 	schema: [PostSchema]
 });
 
-var app = express();
-app.use(bodyParser.urlencoded({extended: true}));
+var app = Express();
+app.use(BodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-	  let posts = blogRealm.objects('Post').sorted('timestamp', true);
+	  let posts = realm.objects('Post').sorted('timestamp', true);
 	  res.render('index.ejs', {posts: posts});
 });
 
@@ -37,8 +37,8 @@ app.post('/write', function(req, res) {
 	let title = req.body['title'],
 	    content = req.body['content'],
 	    timestamp = new Date();
-	blogRealm.write(() => {
-		blogRealm.create('Post', {title: title, content: content, timestamp: timestamp});
+	realm.write(() => {
+		realm.create('Post', {title: title, content: content, timestamp: timestamp});
 	});
 	res.sendFile(__dirname + "/public/contents/blog/write-complete.html");
 });
