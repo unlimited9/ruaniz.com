@@ -1,0 +1,13 @@
+<header id="_nav_header">
+<% include ../../templates/page/section/header.ejs %>
+</header>
+<section id="_content">
+<form action="/blog/write" method="POST">
+  <input type="text" name="title" /><br />
+  <textarea name="content"></textarea><br />
+  <button type="submit">Submit</button>
+</form>
+</section>
+<footer id="_nav_footer">
+<% include ../../templates/page/section/footer.ejs %>
+</footer>

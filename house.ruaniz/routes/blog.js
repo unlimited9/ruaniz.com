@@ -24,10 +24,11 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
 	let posts = blogRealm.objects('Post').sorted('timestamp', true);
-	res.render('blog/index.ejs', {posts: posts});
+	res.render('contents/blog/index.ejs', {posts: posts});
 });
 router.get('/write', (req, res) => {
-	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write.html'));
+	res.render('contents/blog/write.ejs', {});
+//	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write.html'));
 //	res.sendFile('write.html', { root: path.join(__dirname, '../public/contents/blog') });
 });
 router.post('/write', (req, res) => {
@@ -38,7 +39,8 @@ router.post('/write', (req, res) => {
 		blogRealm.create('Post', {title: title, content: content, timestamp: timestamp});
 	});
 
-	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write-complete.html'));
+	res.render('contents/blog/result.ejs', {});
+//	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write-complete.html'));
 });
 
 module.exports = router;

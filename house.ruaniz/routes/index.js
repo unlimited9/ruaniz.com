@@ -5,5 +5,6 @@
 const path = require('path');
 
 exports.index = function(req, res){
-	res.sendFile(path.join(__dirname, '../public/contents', 'index.html'));
+	res.render('index.ejs', {});
+	//res.sendFile(path.join(__dirname, '../public/contents', 'index.html'));
 };
