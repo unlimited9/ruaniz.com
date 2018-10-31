@@ -39,8 +39,8 @@ router.post('/write', (req, res) => {
 		blogRealm.create('Post', {title: title, content: content, timestamp: timestamp});
 	});
 
-	res.render('contents/blog/result.ejs', {});
-//	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write-complete.html'));
+	res.render('contents/blog/write.ejs', {});
+	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write-complete.html'));
 });
 
 module.exports = router;
