@@ -34,8 +34,8 @@ router.post('/write', (req, res) => {
 	let title = req.body['title'],
 	content = req.body['content'],
 	timestamp = new Date();
-	realm.write(() => {
-		realm.create('Post', {title: title, content: content, timestamp: timestamp});
+	blogRealm.write(() => {
+		blogRealm.create('Post', {title: title, content: content, timestamp: timestamp});
 	});
 
 	res.sendFile(path.join(__dirname, '../public/contents/blog', 'write-complete.html'));
